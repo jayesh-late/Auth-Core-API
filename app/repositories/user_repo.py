@@ -1,0 +1,16 @@
+from app.db.model.user import User
+from sqlalchemy.orm import Session
+
+def get_login_by_email(db:Session,email:str):
+    return db.query(User).filter(User.email == email).first()
+
+def create_user(db:Session,email:str,hashed_password:str):
+    user = User(
+        email=email,
+        hashed_password=hashed_password
+    )
+    db.add(user)
+    db.commit()
+    db.refresh(user)
+
+    return user
