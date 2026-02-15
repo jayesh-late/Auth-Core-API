@@ -4,4 +4,4 @@ __pycache__/
 .cache
 *.log
 .idea/
-.Auth.db
+Auth.db
